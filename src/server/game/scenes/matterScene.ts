@@ -73,7 +73,7 @@ export default class MainScene extends Phaser.Scene {
     })
 
     // updates the position of a dude
-    this.events.addListener('updateDude', (res: any) => {
+    this.events.addListener('UD' /* short for updateDude */, (res: any) => {
       let dudes: Dude[] = this.objects.filter(obj => obj.clientId && obj.clientId === res.clientId) as any
       if (dudes[0]) {
         let b = res.updates

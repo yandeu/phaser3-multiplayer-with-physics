@@ -104,7 +104,7 @@ export default class MainScene extends Phaser.Scene {
       }
     })
 
-    this.events.addListener('updateDude', (res: any) => {
+    this.events.addListener('UD' /* short for updateDude */, (res: any) => {
       // @ts-ignore
       let dudes: Dude[] = this.dudeGroup.children.getArray().filter((dude: Dude) => {
         return dude.clientId && dude.clientId === res.clientId
