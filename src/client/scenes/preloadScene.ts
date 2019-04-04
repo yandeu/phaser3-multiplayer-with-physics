@@ -26,7 +26,14 @@ export default class PreloadScene extends Phaser.Scene {
   create() {
     // connecting to socket.io
     const url = `${location.origin}/game`
-    let socket = io.connect(url /*, { query: { scene, level } }*/) as Socket
+
+    let socket = io.connect(url, { transports: ['websocket'] }) as Socket
+
+    // on reconnection, reset the transports option, as the Websocket
+    // connection may have failed (caused by proxy, firewall, browser, ...)
+    socket.on('reconnect_attempt', () => {
+      socket.io.opts.transports = ['polling', 'websocket']
+    })
 
     socket.on('connect', () => {
       console.log("You're connected to socket.io")

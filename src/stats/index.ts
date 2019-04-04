@@ -3,9 +3,15 @@ import axios from 'axios'
 import moment from 'moment'
 
 let url = `${location.origin}/stats`
-let stats = io.connect(url)
+let stats = io.connect(url, { transports: ['websocket'] })
 
 let statsUl = document.getElementById('logs-ul')
+
+// on reconnection, reset the transports option, as the Websocket
+// connection may have failed (caused by proxy, firewall, browser, ...)
+stats.on('reconnect_attempt', () => {
+  stats.io.opts.transports = ['polling', 'websocket']
+})
 
 stats.on('connect', () => {
   console.log("You're connected")
