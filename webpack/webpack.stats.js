@@ -1,0 +1,41 @@
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+module.exports = {
+  mode: 'development',
+  entry: ['./src/stats/index.ts'],
+  output: {
+    publicPath: 'static/stats',
+    path: path.resolve(__dirname, '../dist/stats'),
+    filename: '[name].bundle.js',
+    chunkFilename: '[name].chunk.js'
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js']
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader'
+      }
+    ]
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+          filename: '[name].bundle.js'
+        }
+      }
+    }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/stats/index.html'
+    })
+  ]
+}

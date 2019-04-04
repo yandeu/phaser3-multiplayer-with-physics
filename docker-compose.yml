@@ -1,0 +1,9 @@
+version: '3.7'
+
+services:
+  phaser3-coop-game:
+    container_name: phaser3-coop-game
+    build: .
+    ports:
+      - '8080:3000'
+    restart: always

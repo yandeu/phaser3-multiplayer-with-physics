@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Stats Page</title>
+  </head>
+  <body>
+    <style>
+      body {
+        font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans',
+          'Droid Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      }
+      #stats {
+        display: flex;
+        flex-direction: column;
+      }
+      #logs-ul {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+    </style>
+    <h2>Stats</h2>
+    <div id="stats">
+      <span id="cpu"></span>
+      <span id="memory"></span>
+      <span id="rooms"></span>
+      <span id="users"></span>
+      <span id="objects"></span>
+      <span id="time"></span>
+    </div>
+    <h2>Logs</h2>
+    <div id="logs">
+      <ul id="logs-ul" reversed></ul>
+    </div>
+  </body>
+</html>

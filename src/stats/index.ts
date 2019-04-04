@@ -1,0 +1,46 @@
+import io from 'socket.io-client'
+import axios from 'axios'
+import moment from 'moment'
+
+let url = `${location.origin}/stats`
+let stats = io.connect(url)
+
+let statsUl = document.getElementById('logs-ul')
+
+stats.on('connect', () => {
+  console.log("You're connected")
+})
+
+stats.on('getLog', (res: { date: Date; log: string }) => {
+  if (statsUl) {
+    let li = document.createElement('li')
+    li.innerHTML = `${moment(res.date).format('h:mm:ss a')}: ${res.log}`
+    statsUl.appendChild(li)
+  }
+})
+
+const setInnerHTML = (id: string, text: string | number) => {
+  let el = document.getElementById(id)
+  if (el) el.innerHTML = text.toString()
+}
+
+const getNewServerStats = async () => {
+  try {
+    let res = await axios.get('/stats/get')
+    if (!res || !res.data) throw new Error()
+
+    const { payload } = res.data
+
+    const { time, cpu, memory, rooms, users, objects } = payload
+    setInnerHTML('cpu', `CPU: <b>${Math.round(cpu)}%</b>`)
+    setInnerHTML('memory', `Memory: <b>${Math.round(memory / 1000000)}mb</b>`)
+    setInnerHTML('rooms', `Rooms: <b>${rooms}</b>`)
+    setInnerHTML('users', `Users: <b>${users}</b>`)
+    setInnerHTML('objects', `Objects: <b>${objects}</b>`)
+    setInnerHTML('time', `Server started <b>${moment(time).fromNow()}</b>`)
+  } catch (error) {
+    console.error(error.message)
+  }
+}
+setInterval(getNewServerStats, 2000)
+getNewServerStats()
