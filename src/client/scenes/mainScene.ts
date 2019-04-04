@@ -106,7 +106,7 @@ export default class MainScene extends Phaser.Scene {
       levelText.setText(`Level ${this.level + 1}`)
     })
 
-    socket.on('syncGame', (res: any) => {
+    socket.on('S' /* short for syncGame */, (res: any) => {
       if (res.connectCounter) texts.setConnectCounter(res.connectCounter)
       if (res.time) texts.setTime(res.time)
       if (res.roomId) texts.setRoomId(res.roomId)

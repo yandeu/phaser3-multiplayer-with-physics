@@ -48,8 +48,8 @@ export default class IoGame {
           roomId: socket.room
         }
 
-        socket.emit('syncGame', payload)
-        // ioNspGame.in(socket.room).emit('syncGame', payload)
+        socket.emit('S' /* short for syncGame */, payload)
+        // ioNspGame.in(socket.room).emit('S' /* short for syncGame */, payload)
       })
     })
   }

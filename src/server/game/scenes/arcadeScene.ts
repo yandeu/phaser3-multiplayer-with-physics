@@ -274,7 +274,7 @@ export default class MainScene extends Phaser.Scene {
 
     if (send.length > 0) {
       // send the objects to sync to all connected clients in this.roomId
-      this.roomManager.ioNspGame.in(this.roomId).emit('syncGame', { objects: SyncManager.encode(send) })
+      this.roomManager.ioNspGame.in(this.roomId).emit('S' /* short for syncGame */, { objects: SyncManager.encode(send) })
     }
   }
 }
