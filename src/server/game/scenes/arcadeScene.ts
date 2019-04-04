@@ -237,10 +237,10 @@ export default class MainScene extends Phaser.Scene {
     this.dudeGroup.children.iterate((child: Dude) => {
       child.update()
       // we only update the dude if one if the 4 properties below have changed
-      let x = child.prevPosition.x !== child.body.position.x
-      let y = child.prevPosition.y !== child.body.position.y
+      let x = child.prevPosition.x.toFixed(0) !== child.body.position.x.toFixed(0)
+      let y = child.prevPosition.y.toFixed(0) !== child.body.position.y.toFixed(0)
       let dead = child.prevDead !== child.dead
-      let color = child.prevColor !== child.color
+      let color = child.prevColor.toString() !== child.color.toString()
       if (x || y || dead || color) {
         let object = {
           animation: child.animation,
@@ -274,7 +274,9 @@ export default class MainScene extends Phaser.Scene {
 
     if (send.length > 0) {
       // send the objects to sync to all connected clients in this.roomId
-      this.roomManager.ioNspGame.in(this.roomId).emit('S' /* short for syncGame */, { objects: SyncManager.encode(send) })
+      this.roomManager.ioNspGame
+        .in(this.roomId)
+        .emit('S' /* short for syncGame */, { objects: SyncManager.encode(send) })
     }
   }
 }
