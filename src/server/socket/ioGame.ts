@@ -32,7 +32,10 @@ export default class IoGame {
         if (!roomManager.userExists(socket.room, socket.id)) return
 
         roomManager.rooms[socket.room].users[socket.id].lastUpdate = Date.now()
-        roomManager.rooms[socket.room].scene.events.emit('UD' /* short for updateDude */, { clientId: socket.clientId, updates })
+        roomManager.rooms[socket.room].scene.events.emit('UD' /* short for updateDude */, {
+          clientId: socket.clientId,
+          updates
+        })
       })
 
       socket.on('getInitialState', () => {

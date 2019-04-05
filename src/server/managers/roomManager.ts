@@ -72,7 +72,9 @@ export default class RoomManager {
 
   leaveRoom(socket: Socket) {
     this.removeUser(socket.room, socket.id)
-    this.ioNspGame.in(socket.room).emit('S' /* short for syncGame */, { connectCounter: this.getRoomUsersArray(socket.room).length })
+    this.ioNspGame
+      .in(socket.room)
+      .emit('S' /* short for syncGame */, { connectCounter: this.getRoomUsersArray(socket.room).length })
 
     if (this.isRemoving(socket.room)) return
     this.rooms[socket.room].scene.events.emit('removeDude', socket.clientId)
