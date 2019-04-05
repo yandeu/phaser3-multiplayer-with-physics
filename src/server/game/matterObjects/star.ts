@@ -1,4 +1,5 @@
 import MatterGameObject from './matterGameObject'
+import { SKINS } from '../../../constants'
 
 export default class Star extends MatterGameObject {
   scale: number = 1
@@ -9,7 +10,7 @@ export default class Star extends MatterGameObject {
     public y: number,
     public category: string | undefined = undefined
   ) {
-    super(scene, 'star')
+    super(scene, SKINS.STAR)
 
     if (category === 'big') {
       this.tint = 0xff7200

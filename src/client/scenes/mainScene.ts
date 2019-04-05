@@ -12,6 +12,7 @@ import { world } from '../config'
 import Resize from '../components/resize'
 
 import SyncManager from '../../server/managers/syncManager'
+import { SKINS } from '../../constants'
 
 interface Objects {
   [key: string]: any
@@ -118,20 +119,14 @@ export default class MainScene extends Phaser.Scene {
         this.sync.objects = [...this.sync.objects, ...res.objects]
         this.sync.objects.forEach((obj: any) => {
           // the if the player's dude is in the objects list the camera follows it sprite
-          if (
-            this.objects[obj.id] &&
-            obj.skin &&
-            obj.skin === 'dude' &&
-            obj.clientId &&
-            +obj.clientId === +socket.clientId
-          ) {
+          if (this.objects[obj.id] && obj.skin === SKINS.DUDE && obj.clientId && +obj.clientId === +socket.clientId) {
             this.cameras.main.setScroll(obj.x - this.cameras.main.width / 2, obj.y - this.cameras.main.height / 2)
           }
 
           // if the object does not exist, create a new one
           if (!this.objects[obj.id]) {
             let sprite = this.add
-              .sprite(obj.x, obj.y, obj.skin)
+              .sprite(obj.x, obj.y, obj.skin.toString())
               .setOrigin(0.5)
               .setRotation(obj.angle || 0)
 
@@ -207,10 +202,10 @@ export default class MainScene extends Phaser.Scene {
           if (obj.y !== null) sprite.y = obj.y
           if (obj.angle !== null && typeof obj.angle !== 'undefined') sprite.angle = obj.angle
           if (obj.skin !== null) {
-            if (obj.skin === 'mummy') {
+            if (obj.skin === SKINS.MUMMY) {
               if (obj.direction !== null) setMummyAnimation(sprite, obj.direction)
             }
-            if (obj.skin === 'dude') {
+            if (obj.skin === SKINS.DUDE) {
               if (obj.animation !== null) setDudeAnimation(sprite, obj.animation)
             }
           }

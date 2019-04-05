@@ -1,10 +1,11 @@
 import MatterGameObject from './matterGameObject'
+import { SKINS } from '../../../constants'
 
 export default class Box extends MatterGameObject {
   lifeTime: number
 
   constructor(public scene: Phaser.Scene, x: number, y: number) {
-    super(scene, 'box')
+    super(scene, SKINS.BOX)
 
     this.addBody(
       this.Matter.Bodies.rectangle(x, y, 95, 95, { friction: 0.1, chamfer: 14, label: 'box', density: 0.000125 })

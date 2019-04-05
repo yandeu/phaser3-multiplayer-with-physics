@@ -1,4 +1,5 @@
 import io from 'socket.io-client'
+import { SKINS } from '../../constants'
 
 export default class PreloadScene extends Phaser.Scene {
   constructor() {
@@ -7,12 +8,12 @@ export default class PreloadScene extends Phaser.Scene {
 
   preload() {
     this.load.setBaseURL('static/client')
-    this.load.image('box', 'assets/box.png')
-    this.load.image('star', 'assets/star.png')
+    this.load.image(SKINS.BOX.toString(), 'assets/box.png')
+    this.load.image(SKINS.STAR.toString(), 'assets/star.png')
     this.load.image('bug', 'assets/bug.png')
     this.load.image('starfield', 'assets/starfield.jpg')
     this.load.image('controls', 'assets/controls.png')
-    this.load.spritesheet('dude', 'assets/dude.png', {
+    this.load.spritesheet(SKINS.DUDE.toString(), 'assets/dude.png', {
       frameWidth: 32,
       frameHeight: 48
     })
@@ -20,7 +21,7 @@ export default class PreloadScene extends Phaser.Scene {
       frameWidth: 64,
       frameHeight: 64
     })
-    this.load.spritesheet('mummy', 'assets/mummy37x45.png', { frameWidth: 37, frameHeight: 45 })
+    this.load.spritesheet(SKINS.MUMMY.toString(), 'assets/mummy37x45.png', { frameWidth: 37, frameHeight: 45 })
   }
 
   create() {

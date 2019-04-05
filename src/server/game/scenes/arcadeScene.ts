@@ -7,6 +7,7 @@ import Mummy from '../arcadeObjects/mummy'
 import Map from '../arcadeObjects/map'
 import SyncManager from '../../managers/syncManager'
 import RoomManager from '../../managers/roomManager'
+import { SKINS } from '../../../constants';
 
 export default class MainScene extends Phaser.Scene {
   id = 0
@@ -261,7 +262,7 @@ export default class MainScene extends Phaser.Scene {
 
     Object.keys(this.objectsToSync).forEach(key => {
       // we only sync the mummies on every 3th frame
-      if (this.objectsToSync[key].skin === 'mummy') {
+      if (this.objectsToSync[key].skin === SKINS.MUMMY) {
         if (this.tick % 3 === 0) {
           send.push(this.objectsToSync[key])
           delete this.objectsToSync[key]

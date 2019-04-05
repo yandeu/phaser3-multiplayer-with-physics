@@ -1,5 +1,7 @@
+import { SKINS } from "../../../constants";
+
 export default class Mummy extends Phaser.Physics.Arcade.Sprite {
-  skin = 'mummy'
+  skin = SKINS.MUMMY
   id: string
   direction: 'left' | 'right'
   dead: boolean = false

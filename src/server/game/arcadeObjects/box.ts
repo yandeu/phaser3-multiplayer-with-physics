@@ -1,5 +1,7 @@
+import { SKINS } from "../../../constants";
+
 export default class Box extends Phaser.Physics.Arcade.Sprite {
-  skin = 'box'
+  skin = SKINS.BOX
   id: string
   sync = true
 

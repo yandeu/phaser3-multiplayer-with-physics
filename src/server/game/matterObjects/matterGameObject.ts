@@ -10,7 +10,7 @@ export default class MatterGameObject {
   prevAnimation: string = 'idle'
   tint = 0x000000
 
-  constructor(public scene: Phaser.Scene, public skin: string) {
+  constructor(public scene: Phaser.Scene, public skin: number) {
     this.Matter = Phaser.Physics.Matter.Matter
   }
 

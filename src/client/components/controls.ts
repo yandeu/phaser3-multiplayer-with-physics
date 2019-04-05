@@ -83,7 +83,7 @@ export default class Controls {
 }
 
 class Control extends Phaser.GameObjects.Image {
-  constructor(scene: Phaser.Scene, x: number, y: number, public skin: string) {
+  constructor(scene: Phaser.Scene, x: number, y: number, public type: string) {
     super(scene, x, y, 'controls')
     scene.add.existing(this)
 

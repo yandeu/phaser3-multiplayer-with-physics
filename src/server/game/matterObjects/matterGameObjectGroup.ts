@@ -2,6 +2,7 @@ import Dude from './dude'
 import Box from './box'
 import MatterGameObject from './matterGameObject'
 import Star from './star'
+import { SKINS } from '../../../constants';
 
 interface GameObjectGroupAddOptions {
   socketId?: string
@@ -30,7 +31,7 @@ export default class GameObjectGroup {
     return object
   }
 
-  add(x: number, y: number, skin: 'dude' | 'box' | 'star', options: GameObjectGroupAddOptions = {}) {
+  add(x: number, y: number, skin: number, options: GameObjectGroupAddOptions = {}) {
     let dead = this.objects.filter(obj => obj.dead && obj.skin === skin)
     let alive = this.objects.filter(obj => !obj.dead && obj.skin === skin)
 
@@ -47,8 +48,8 @@ export default class GameObjectGroup {
       object.revive(x, y, clientId, socketId)
     } else {
       // create a new object and add it to the objects array
-      if (skin === 'box') object = new Box(this.scene, x, y)
-      else if (skin === 'star') object = new Star(this.scene, x, y, category)
+      if (skin === SKINS.BOX) object = new Box(this.scene, x, y)
+      else if (skin === SKINS.STAR) object = new Star(this.scene, x, y, category)
       else if (typeof clientId !== 'undefined' && typeof socketId !== 'undefined')
         object = new Dude(this.scene, x, y, clientId, socketId)
       if (object) this.objects.push(object)
@@ -56,7 +57,7 @@ export default class GameObjectGroup {
 
     // Rotate the box
     // TODO(yandeu) this should be inside the boxObject class
-    if (skin === 'box' && object) this.Matter.Body.rotate(object.body, Math.random() * 2)
+    if (skin === SKINS.BOX && object) this.Matter.Body.rotate(object.body, Math.random() * 2)
 
     return object
   }

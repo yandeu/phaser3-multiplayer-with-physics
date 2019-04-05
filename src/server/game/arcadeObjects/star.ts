@@ -1,5 +1,7 @@
+import { SKINS } from "../../../constants";
+
 export default class Star extends Phaser.Physics.Arcade.Sprite {
-  skin = 'star'
+  skin = SKINS.STAR
   id: string
   sync = true
   tint = 0x00ff00

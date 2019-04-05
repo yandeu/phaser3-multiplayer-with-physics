@@ -8,6 +8,7 @@ import { world } from '../../../client/config'
 import Cursors from '../../../client/components/cursors'
 import SyncManager from '../../managers/syncManager'
 import RoomManager from '../../managers/roomManager'
+import { SKINS } from '../../../constants'
 
 export default class MainScene extends Phaser.Scene {
   objects: MatterGameObject[] = []
@@ -69,7 +70,7 @@ export default class MainScene extends Phaser.Scene {
       let rightX = Phaser.Math.RND.integerInRange(this.cameras.main.width / 2 + 640, world.x + world.width - 100)
       let x = Math.random() > 0.5 ? leftX : rightX
       let y = -50
-      gameObjectGroup.add(x, y, 'dude', { clientId, socketId })
+      gameObjectGroup.add(x, y, SKINS.DUDE, { clientId, socketId })
     })
 
     // updates the position of a dude
@@ -100,7 +101,7 @@ export default class MainScene extends Phaser.Scene {
       callback: () => {
         let x = Phaser.Math.RND.integerInRange(worldCenterX - 250 - 640, worldCenterX + 640 + 250)
         let y = 100
-        gameObjectGroup.add(x, y, 'box')
+        gameObjectGroup.add(x, y, SKINS.BOX)
       }
     })
 
@@ -114,7 +115,7 @@ export default class MainScene extends Phaser.Scene {
         .setAlpha(0.6)
       this.debug.socket = { emit: () => {} } // mock socket
       this.debug.cursors = new Cursors(this, this.debug.socket)
-      this.debug.dude = gameObjectGroup.add(400, 400, 'dude', { clientId: 55555, socketId: 'some-socket-id' })
+      this.debug.dude = gameObjectGroup.add(400, 400, SKINS.DUDE, { clientId: 55555, socketId: 'some-socket-id' })
     }
 
     if (!PHYSICS_DEBUG) {
@@ -128,23 +129,23 @@ export default class MainScene extends Phaser.Scene {
     }
 
     // add the big star
-    gameObjectGroup.add(worldCenterX, world.height - 320 - 100 - 115, 'star', {
+    gameObjectGroup.add(worldCenterX, world.height - 320 - 100 - 115, SKINS.STAR, {
       category: 'big'
     })
 
     // add medium stars
     for (let x = worldCenterX - 128; x < worldCenterX + 128 + 64; x += 128)
-      gameObjectGroup.add(x, world.height - 320 - 100, 'star', { category: 'medium' })
+      gameObjectGroup.add(x, world.height - 320 - 100, SKINS.STAR, { category: 'medium' })
 
     // add yellow stars
     for (let x = worldCenterX - 160 - 80; x < worldCenterX + 320 + 80; x += 160)
-      gameObjectGroup.add(x, world.height - 320, 'star')
+      gameObjectGroup.add(x, world.height - 320, SKINS.STAR)
 
     // create 4 boxes at server start
-    gameObjectGroup.add(1280, 640, 'box')
-    gameObjectGroup.add(1280, 640, 'box')
-    gameObjectGroup.add(1280, 640, 'box')
-    gameObjectGroup.add(1280, 640, 'box')
+    gameObjectGroup.add(1280, 640, SKINS.BOX)
+    gameObjectGroup.add(1280, 640, SKINS.BOX)
+    gameObjectGroup.add(1280, 640, SKINS.BOX)
+    gameObjectGroup.add(1280, 640, SKINS.BOX)
 
     // check for collisions
     const collisionEvent = (event: any) => {
@@ -257,7 +258,7 @@ export default class MainScene extends Phaser.Scene {
             dead: dead ? obj.dead : null,
             animation: obj.animation ? obj.animation : null,
             clientId: obj.clientId ? obj.clientId : null,
-            skin: obj.skin ? obj.skin : null
+            skin: obj.skin
           }
           let cleanObjectToSync = SyncManager.cleanObjectToSync(theObj)
           this.objectsToSync = SyncManager.mergeObjectToSync(cleanObjectToSync, this.objectsToSync)
@@ -272,7 +273,7 @@ export default class MainScene extends Phaser.Scene {
         // this syncs the dude on every frame
         // but the boxes only on every second frame
         // (safes a lot of bandwidth)
-        if (this.objectsToSync[key].skin === 'box') {
+        if (this.objectsToSync[key].skin === SKINS.BOX) {
           if (this.tick % 2 === 0) {
             send.push(this.objectsToSync[key])
             delete this.objectsToSync[key]

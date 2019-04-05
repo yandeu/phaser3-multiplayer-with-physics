@@ -57,9 +57,9 @@ export default class SyncManager {
     addToObjectToSync('id', obj.id || obj.body.id)
     addToObjectToSync('x', obj.x || obj.body.position.x || null)
     addToObjectToSync('y', obj.y || obj.body.position.y || null)
-    addToObjectToSync('angle', obj.angle || null)
-    addToObjectToSync('dead', obj.dead || null)
-    addToObjectToSync('skin', obj.skin || null)
+    addToObjectToSync('angle', obj.angle !== 'undefined' ? obj.angle : null)
+    addToObjectToSync('dead', obj.dead !== 'undefined' ? obj.dead : null)
+    addToObjectToSync('skin', obj.skin !== 'undefined' ? obj.skin : null)
     addToObjectToSync('animation', obj.animation || null)
     addToObjectToSync('direction', obj.direction || null)
     addToObjectToSync('scale', obj.scale && obj.scale !== 1 ? obj.scale : null)
@@ -83,7 +83,18 @@ export default class SyncManager {
 
     let obj: any = {}
     data.split(',').forEach((value: string, index: number) => {
-      obj[keys[index % keys.length]] = value !== '' ? value : null
+      let key = keys[index % keys.length]
+
+      // numbers
+      if (['x', 'y', 'angle', 'skin', 'scale', 'clientId'].includes(key)) {
+        obj[key] = value !== '' ? parseInt(value) : null
+      }
+      // booleans
+      else if (['dead'].includes(key)) {
+        obj[key] = value === '0' ? false : value === '1' ? true : null
+      }
+      // strings
+      else obj[key] = value !== '' ? value : null
 
       if (index % keys.length === keys.length - 1) {
         decodedArray.push({ ...obj })
@@ -100,7 +111,7 @@ export default class SyncManager {
     let encodedString = ''
     objs.forEach((obj: any) => {
       keys.forEach(key => {
-        if (obj[key]) {
+        if (typeof obj[key] !== 'undefined') {
           let data = key === 'x' || key === 'y' || key === 'angle' ? obj[key].toFixed(0) : obj[key]
           if (typeof obj[key] === 'boolean') data = obj[key] === false ? 0 : 1
           encodedString += `${data},`

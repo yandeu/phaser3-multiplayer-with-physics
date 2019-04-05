@@ -1,4 +1,5 @@
 import MatterGameObject from './matterGameObject'
+import { SKINS } from '../../../constants'
 
 export default class Dude extends MatterGameObject {
   maxVelocity = {
@@ -29,7 +30,7 @@ export default class Dude extends MatterGameObject {
   updates: any = {}
 
   constructor(scene: Phaser.Scene, x: number, y: number, public clientId: number, public socketId: string) {
-    super(scene, 'dude')
+    super(scene, SKINS.DUDE)
 
     let h = this.height
     let w = this.width - 4

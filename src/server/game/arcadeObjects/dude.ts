@@ -1,5 +1,7 @@
+import { SKINS } from "../../../constants";
+
 export default class Dude extends Phaser.Physics.Arcade.Sprite {
-  skin = 'dude'
+  skin = SKINS.DUDE
   clientId: number
   socketId: string
   id: string
