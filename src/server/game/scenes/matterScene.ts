@@ -233,19 +233,27 @@ export default class MainScene extends Phaser.Scene {
         obj.preUpdate()
         obj.update()
 
+        const roundToEvenNumber = (number: number) => {
+          try {
+            return +(Math.round(number / 2) * 2).toFixed(0)
+          } catch (e) {
+            return 0
+          }
+        }
+
         // only send the object to the client if one of these properties have changed
         let dead = obj.dead != obj.prevDead
-        let x = Math.abs(obj.body.position.x - obj.body.positionPrev.x) >= 0.25
-        let y = Math.abs(obj.body.position.y - obj.body.positionPrev.y) >= 0.25
-        let angle = Math.abs(obj.angle - obj.prevAngle) >= 0.0000000001
+        let x = obj.body.position.x.toFixed(0) != obj.body.positionPrev.x.toFixed(0)
+        let y = obj.body.position.y.toFixed(0) != obj.body.positionPrev.y.toFixed(0)
+        let angle = roundToEvenNumber(obj.angle) != roundToEvenNumber(obj.prevAngle)
         let animation = obj.animation !== obj.prevAnimation
         if (dead || x || y || angle || animation) {
           let theObj: { [key: string]: any } = {
             // it always needs to have an id!
             id: obj.body.id,
-            x: +obj.body.position.x.toFixed(1),
-            y: +obj.body.position.y.toFixed(1),
-            angle: angle ? obj.angle : null,
+            x: +obj.body.position.x.toFixed(0),
+            y: +obj.body.position.y.toFixed(0),
+            angle: angle ? roundToEvenNumber(obj.angle) : null,
             dead: dead ? obj.dead : null,
             animation: obj.animation ? obj.animation : null,
             clientId: obj.clientId ? obj.clientId : null,
@@ -277,7 +285,9 @@ export default class MainScene extends Phaser.Scene {
 
       if (send.length > 0) {
         // send the objects to sync to all connected clients in this.roomId
-        this.roomManager.ioNspGame.in(this.roomId).emit('S' /* short for syncGame */, { objects: SyncManager.encode(send) })
+        this.roomManager.ioNspGame
+          .in(this.roomId)
+          .emit('S' /* short for syncGame */, { objects: SyncManager.encode(send) })
       }
     }
   }
