@@ -198,7 +198,7 @@ export default class MainScene extends Phaser.Scene {
 
     if (this.star && this.star.sync) {
       let starObj = {
-        type: this.star.type,
+        skin: this.star.skin,
         tint: this.star.tint,
         id: this.star.id,
         x: this.star.body.position.x + this.star.body.width / 2,
@@ -211,7 +211,7 @@ export default class MainScene extends Phaser.Scene {
     // @ts-ignore
     this.mummyGroup.children.iterate((child: Mummy) => {
       let object = {
-        type: child.type,
+        skin: child.skin,
         direction: child.direction,
         id: child.id,
         x: child.body.position.x + child.body.width / 2,
@@ -224,7 +224,7 @@ export default class MainScene extends Phaser.Scene {
     this.boxGroup.children.iterate((child: Box) => {
       if (child.sync) {
         let object = {
-          type: child.type,
+          skin: child.skin,
           id: child.id,
           x: child.body.position.x + child.body.width / 2,
           y: child.body.position.y + child.body.height / 2
@@ -246,7 +246,7 @@ export default class MainScene extends Phaser.Scene {
           animation: child.animation,
           dead: child.dead,
           clientId: child.clientId,
-          type: child.type,
+          skin: child.skin,
           tint: child.color,
           id: child.id,
           x: child.body.position.x + child.body.width / 2,
@@ -261,7 +261,7 @@ export default class MainScene extends Phaser.Scene {
 
     Object.keys(this.objectsToSync).forEach(key => {
       // we only sync the mummies on every 3th frame
-      if (this.objectsToSync[key].type === 'mummy') {
+      if (this.objectsToSync[key].skin === 'mummy') {
         if (this.tick % 3 === 0) {
           send.push(this.objectsToSync[key])
           delete this.objectsToSync[key]

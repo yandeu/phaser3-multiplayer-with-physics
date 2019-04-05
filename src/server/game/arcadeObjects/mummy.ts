@@ -1,5 +1,5 @@
 export default class Mummy extends Phaser.Physics.Arcade.Sprite {
-  type = 'mummy'
+  skin = 'mummy'
   id: string
   direction: 'left' | 'right'
   dead: boolean = false

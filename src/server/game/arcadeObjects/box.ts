@@ -1,5 +1,5 @@
 export default class Box extends Phaser.Physics.Arcade.Sprite {
-  type = 'box'
+  skin = 'box'
   id: string
   sync = true
 

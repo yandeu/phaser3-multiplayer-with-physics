@@ -59,7 +59,7 @@ export default class SyncManager {
     addToObjectToSync('y', obj.y || obj.body.position.y || null)
     addToObjectToSync('angle', obj.angle || null)
     addToObjectToSync('dead', obj.dead || null)
-    addToObjectToSync('type', obj.type || null)
+    addToObjectToSync('skin', obj.skin || null)
     addToObjectToSync('animation', obj.animation || null)
     addToObjectToSync('direction', obj.direction || null)
     addToObjectToSync('scale', obj.scale && obj.scale !== 1 ? obj.scale : null)
@@ -74,7 +74,7 @@ export default class SyncManager {
 
   static get keys() {
     // sort these based on most used
-    return ['id', 'x', 'y', 'angle', 'dead', 'type', 'animation', 'direction', 'scale', 'tint', 'clientId', 'category']
+    return ['id', 'x', 'y', 'angle', 'dead', 'skin', 'animation', 'direction', 'scale', 'tint', 'clientId', 'category']
   }
 
   static decode(data: any) {

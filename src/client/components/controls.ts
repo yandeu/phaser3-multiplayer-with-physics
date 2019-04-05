@@ -11,8 +11,10 @@ export default class Controls {
     scene.input.addPointer()
 
     const detectPointer = (gameObject: Phaser.GameObjects.GameObject, down: boolean) => {
-      if (gameObject.type) {
-        switch (gameObject.type) {
+      // @ts-ignore
+      if (gameObject.skin) {
+        // @ts-ignore
+        switch (gameObject.skin) {
           case 'left':
             this.left = down
             break
@@ -81,7 +83,7 @@ export default class Controls {
 }
 
 class Control extends Phaser.GameObjects.Image {
-  constructor(scene: Phaser.Scene, x: number, y: number, public type: string) {
+  constructor(scene: Phaser.Scene, x: number, y: number, public skin: string) {
     super(scene, x, y, 'controls')
     scene.add.existing(this)
 

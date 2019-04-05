@@ -1,5 +1,5 @@
 export default class Star extends Phaser.Physics.Arcade.Sprite {
-  type = 'star'
+  skin = 'star'
   id: string
   sync = true
   tint = 0x00ff00

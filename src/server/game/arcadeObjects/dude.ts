@@ -1,5 +1,5 @@
 export default class Dude extends Phaser.Physics.Arcade.Sprite {
-  type = 'dude'
+  skin = 'dude'
   clientId: number
   socketId: string
   id: string

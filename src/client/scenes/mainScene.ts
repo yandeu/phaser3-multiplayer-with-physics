@@ -120,8 +120,8 @@ export default class MainScene extends Phaser.Scene {
           // the if the player's dude is in the objects list the camera follows it sprite
           if (
             this.objects[obj.id] &&
-            obj.type &&
-            obj.type === 'dude' &&
+            obj.skin &&
+            obj.skin === 'dude' &&
             obj.clientId &&
             +obj.clientId === +socket.clientId
           ) {
@@ -131,7 +131,7 @@ export default class MainScene extends Phaser.Scene {
           // if the object does not exist, create a new one
           if (!this.objects[obj.id]) {
             let sprite = this.add
-              .sprite(obj.x, obj.y, obj.type)
+              .sprite(obj.x, obj.y, obj.skin)
               .setOrigin(0.5)
               .setRotation(obj.angle || 0)
 
@@ -206,11 +206,11 @@ export default class MainScene extends Phaser.Scene {
           if (obj.x !== null) sprite.x = obj.x
           if (obj.y !== null) sprite.y = obj.y
           if (obj.angle !== null && typeof obj.angle !== 'undefined') sprite.angle = obj.angle
-          if (obj.type !== null) {
-            if (obj.type === 'mummy') {
+          if (obj.skin !== null) {
+            if (obj.skin === 'mummy') {
               if (obj.direction !== null) setMummyAnimation(sprite, obj.direction)
             }
-            if (obj.type === 'dude') {
+            if (obj.skin === 'dude') {
               if (obj.animation !== null) setDudeAnimation(sprite, obj.animation)
             }
           }

@@ -257,7 +257,7 @@ export default class MainScene extends Phaser.Scene {
             dead: dead ? obj.dead : null,
             animation: obj.animation ? obj.animation : null,
             clientId: obj.clientId ? obj.clientId : null,
-            type: obj.type ? obj.type : null
+            skin: obj.skin ? obj.skin : null
           }
           let cleanObjectToSync = SyncManager.cleanObjectToSync(theObj)
           this.objectsToSync = SyncManager.mergeObjectToSync(cleanObjectToSync, this.objectsToSync)
@@ -272,7 +272,7 @@ export default class MainScene extends Phaser.Scene {
         // this syncs the dude on every frame
         // but the boxes only on every second frame
         // (safes a lot of bandwidth)
-        if (this.objectsToSync[key].type === 'box') {
+        if (this.objectsToSync[key].skin === 'box') {
           if (this.tick % 2 === 0) {
             send.push(this.objectsToSync[key])
             delete this.objectsToSync[key]
