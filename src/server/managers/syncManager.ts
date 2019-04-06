@@ -85,9 +85,17 @@ export default class SyncManager {
     data.split(',').forEach((value: string, index: number) => {
       let key = keys[index % keys.length]
 
+      // id (radix 36)
+      if (key === 'id') {
+        obj[key] = parseInt(value, 36).toString()
+      }
       // numbers
-      if (['x', 'y', 'angle', 'skin', 'scale', 'clientId'].includes(key)) {
+      else if (['skin', 'scale'].includes(key)) {
         obj[key] = value !== '' ? parseInt(value) : null
+      }
+      // numbers (radix 36)
+      else if (['x', 'y', 'angle', 'clientId'].includes(key)) {
+        obj[key] = value !== '' ? parseInt(value, 36) : null
       }
       // booleans
       else if (['dead'].includes(key)) {
@@ -112,9 +120,18 @@ export default class SyncManager {
     objs.forEach((obj: any) => {
       keys.forEach(key => {
         if (typeof obj[key] !== 'undefined') {
-          let data = key === 'x' || key === 'y' || key === 'angle' ? obj[key].toFixed(0) : obj[key]
-          if (typeof obj[key] === 'boolean') data = obj[key] === false ? 0 : 1
-          encodedString += `${data},`
+          let value = obj[key]
+
+          // booleans
+          if (typeof obj[key] === 'boolean') value = obj[key] === false ? 0 : 1
+          // some numbers to radix 36
+          else if (['id', 'x', 'y', 'angle', 'clientId'].includes(key)) {
+            value = +value
+            value = +value.toFixed(0)
+            value = value.toString(36)
+          }
+
+          encodedString += `${value},`
         } else encodedString += ','
       })
     })
