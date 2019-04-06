@@ -27,12 +27,12 @@ export default class IoGame {
         socket.emit('getPong', id)
       })
 
-      socket.on('UD' /* short for updateDude */, (updates: any) => {
+      socket.on('U' /* short for updateDude */, (updates: any) => {
         if (roomManager.isRemoving(socket.room)) return
         if (!roomManager.userExists(socket.room, socket.id)) return
 
         roomManager.rooms[socket.room].users[socket.id].lastUpdate = Date.now()
-        roomManager.rooms[socket.room].scene.events.emit('UD' /* short for updateDude */, {
+        roomManager.rooms[socket.room].scene.events.emit('U' /* short for updateDude */, {
           clientId: socket.clientId,
           updates
         })
@@ -45,7 +45,7 @@ export default class IoGame {
         let payload = {
           time: this.time,
           // @ts-ignore
-          objects: roomManager.rooms[socket.room].scene.getInitialState(),
+          O /* short for objects */: roomManager.rooms[socket.room].scene.getInitialState(),
           connectCounter: roomManager.getRoomUsersArray(socket.room).length,
           initialState: true,
           roomId: socket.room

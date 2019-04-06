@@ -2,7 +2,7 @@ import io from 'socket.io-client'
 import axios from 'axios'
 import moment from 'moment'
 
-let url = `${location.origin}/stats`
+let url = `${location.origin}/S` /* short for stats */
 let stats = io.connect(url, { transports: ['websocket'] })
 
 let statsUl = document.getElementById('logs-ul')

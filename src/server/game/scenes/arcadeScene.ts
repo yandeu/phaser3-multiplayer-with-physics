@@ -7,7 +7,7 @@ import Mummy from '../arcadeObjects/mummy'
 import Map from '../arcadeObjects/map'
 import SyncManager from '../../managers/syncManager'
 import RoomManager from '../../managers/roomManager'
-import { SKINS } from '../../../constants';
+import { SKINS } from '../../../constants'
 
 export default class MainScene extends Phaser.Scene {
   id = 0
@@ -105,7 +105,7 @@ export default class MainScene extends Phaser.Scene {
       }
     })
 
-    this.events.addListener('UD' /* short for updateDude */, (res: any) => {
+    this.events.addListener('U' /* short for updateDude */, (res: any) => {
       // @ts-ignore
       let dudes: Dude[] = this.dudeGroup.children.getArray().filter((dude: Dude) => {
         return dude.clientId && dude.clientId === res.clientId
@@ -277,7 +277,7 @@ export default class MainScene extends Phaser.Scene {
       // send the objects to sync to all connected clients in this.roomId
       this.roomManager.ioNspGame
         .in(this.roomId)
-        .emit('S' /* short for syncGame */, { objects: SyncManager.encode(send) })
+        .emit('S' /* short for syncGame */, { O /* short for objects */: SyncManager.encode(send) })
     }
   }
 }

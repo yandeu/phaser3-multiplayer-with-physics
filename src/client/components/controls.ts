@@ -75,7 +75,7 @@ export default class Controls {
       if (this.right) total += 2
       if (this.up) total += 4
       if (this.none) total += 8
-      this.socket.emit('UD' /* short for updateDude */, total)
+      this.socket.emit('U' /* short for updateDude */, total)
     }
 
     this.prevNone = this.none

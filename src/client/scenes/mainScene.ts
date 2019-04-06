@@ -112,11 +112,11 @@ export default class MainScene extends Phaser.Scene {
       if (res.time) texts.setTime(res.time)
       if (res.roomId) texts.setRoomId(res.roomId)
 
-      // res.objects contains only the objects that need to be updated
-      if (res.objects) {
-        res.objects = SyncManager.decode(res.objects)
+      // res.O (objects) contains only the objects that need to be updated
+      if (res.O /* short for objects */) {
+        res.O = SyncManager.decode(res.O)
 
-        this.sync.objects = [...this.sync.objects, ...res.objects]
+        this.sync.objects = [...this.sync.objects, ...res.O]
         this.sync.objects.forEach((obj: any) => {
           // the if the player's dude is in the objects list the camera follows it sprite
           if (this.objects[obj.id] && obj.skin === SKINS.DUDE && obj.clientId && +obj.clientId === +socket.clientId) {

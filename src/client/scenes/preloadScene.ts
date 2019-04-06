@@ -26,7 +26,7 @@ export default class PreloadScene extends Phaser.Scene {
 
   create() {
     // connecting to socket.io
-    const url = `${location.origin}/game`
+    const url = `${location.origin}/G` /* short for stats */
 
     let socket = io.connect(url, { transports: ['websocket'] }) as Socket
 

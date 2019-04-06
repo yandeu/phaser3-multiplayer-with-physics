@@ -74,7 +74,7 @@ export default class MainScene extends Phaser.Scene {
     })
 
     // updates the position of a dude
-    this.events.addListener('UD' /* short for updateDude */, (res: any) => {
+    this.events.addListener('U' /* short for updateDude */, (res: any) => {
       let dudes: Dude[] = this.objects.filter(obj => obj.clientId && obj.clientId === res.clientId) as any
       if (dudes[0]) {
         let b = res.updates
@@ -288,7 +288,7 @@ export default class MainScene extends Phaser.Scene {
         // send the objects to sync to all connected clients in this.roomId
         this.roomManager.ioNspGame
           .in(this.roomId)
-          .emit('S' /* short for syncGame */, { objects: SyncManager.encode(send) })
+          .emit('S' /* short for syncGame */, { O /* short for objects */: SyncManager.encode(send) })
       }
     }
   }
