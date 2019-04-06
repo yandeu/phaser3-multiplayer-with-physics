@@ -10,11 +10,9 @@ export default class Controls {
     // add a second pointer
     scene.input.addPointer()
 
-    const detectPointer = (gameObject: Phaser.GameObjects.GameObject, down: boolean) => {
-      // @ts-ignore
-      if (gameObject.skin) {
-        // @ts-ignore
-        switch (gameObject.skin) {
+    const detectPointer = (gameObject: Control, down: boolean) => {
+      if (gameObject.btn) {
+        switch (gameObject.btn) {
           case 'left':
             this.left = down
             break
@@ -27,10 +25,10 @@ export default class Controls {
         }
       }
     }
-    scene.input.on('gameobjectdown', (pointer: Phaser.Input.Pointer, gameObject: Phaser.GameObjects.GameObject) =>
+    scene.input.on('gameobjectdown', (pointer: Phaser.Input.Pointer, gameObject: Control) =>
       detectPointer(gameObject, true)
     )
-    scene.input.on('gameobjectup', (pointer: Phaser.Input.Pointer, gameObject: Phaser.GameObjects.GameObject) =>
+    scene.input.on('gameobjectup', (pointer: Phaser.Input.Pointer, gameObject: Control) =>
       detectPointer(gameObject, false)
     )
 
@@ -83,7 +81,7 @@ export default class Controls {
 }
 
 class Control extends Phaser.GameObjects.Image {
-  constructor(scene: Phaser.Scene, x: number, y: number, public type: string) {
+  constructor(scene: Phaser.Scene, x: number, y: number, public btn: string) {
     super(scene, x, y, 'controls')
     scene.add.existing(this)
 
