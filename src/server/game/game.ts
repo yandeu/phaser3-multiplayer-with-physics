@@ -1,4 +1,4 @@
-import '../mock/mockBrowser'
+import '@geckos.io/phaser-on-nodejs'
 import commonConfig, { arcadePhysics, matterPhysics } from './config'
 
 import ArcadeScene from './scenes/arcadeScene'

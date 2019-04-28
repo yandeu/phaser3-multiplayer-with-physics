@@ -1,6 +1,6 @@
 {
   "name": "phaser3-multiplayer-with-physics",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Phaser 3 - Real-Time Multiplayer Game with MatterJS Physics",
   "homepage": "https://github.com/yandeu/phaser3-multiplayer-with-physics#readme",
   "main": "server.js",
@@ -36,12 +36,11 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@geckos.io/phaser-on-nodejs": "^1.0.0",
     "axios": "^0.18.0",
-    "canvas": "^2.4.0",
     "compression": "^1.7.4",
     "express": "^4.16.4",
     "helmet": "^3.16.0",
-    "jsdom": "^14.0.0",
     "moment": "^2.24.0",
     "phaser": "3.16.2",
     "pidusage": "^2.0.17",
