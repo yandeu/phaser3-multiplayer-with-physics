@@ -73,6 +73,10 @@ $ npm run dev
 $ npm run docker:publish
 ```
 
+## Other Multiplayer Examples
+
+Looking for a simpler multiplayer example? Take a look at [Phaser 3 - Multiplayer Game Example](https://github.com/geckosio/phaser3-multiplayer-game-example).
+
 ## License
 
 The MIT License (MIT) 2019 - [Yannick Deubel](https://github.com/yandeu). Please have a look at the [LICENSE](LICENSE) for more details.
