@@ -1,11 +1,6 @@
 import Texts from '../components/texts'
 import Cursors from '../components/cursors'
-import {
-  createDudeAnimations,
-  setDudeAnimation,
-  createMummyAnimation,
-  setMummyAnimation
-} from '../components/animations'
+import { setDudeAnimation, setMummyAnimation } from '../components/animations'
 import fullscreenButton from '../components/fullscreenButton'
 import Controls from '../components/controls'
 import { world } from '../config'
@@ -70,9 +65,6 @@ export default class MainScene extends Phaser.Scene {
     let fullscreenBtn = fullscreenButton(this)
 
     this.cameras.main.setBounds(world.x, world.y, world.width, world.height)
-
-    createDudeAnimations(this)
-    createMummyAnimation(this)
 
     socket.on('getPong', (id: string) => {
       if (this.latency.id !== id) return
