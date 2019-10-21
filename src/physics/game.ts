@@ -6,7 +6,7 @@ import MatterScene from '../server/game/scenes/matterScene'
 class PhaserGame extends Phaser.Game {
   debug = true
 
-  constructor(public io: SocketIO.Namespace, config: GameConfig) {
+  constructor(public io: SocketIO.Namespace, config: Phaser.Types.Core.GameConfig) {
     super(config)
   }
 }
@@ -30,7 +30,7 @@ const Game = (io: SocketIO.Namespace) => {
   if (/matter/.test(href)) {
     config.scene = [MatterScene]
     config.physics = matterPhysics
-    config.physics.matter.debug = true
+    if (config.physics.matter) config.physics.matter.debug = true
   }
 
   return new PhaserGame(io, config)

@@ -1,6 +1,6 @@
 import 'phaser'
 
-const config: GameConfig = {
+const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.HEADLESS,
   parent: 'phaser-game',
   width: 1280,

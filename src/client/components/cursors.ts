@@ -1,5 +1,5 @@
 export default class Cursors {
-  cursors: Phaser.Input.Keyboard.CursorKeys
+  cursors: Phaser.Types.Input.Keyboard.CursorKeys
 
   none = true
   prevNone = true

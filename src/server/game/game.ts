@@ -6,7 +6,7 @@ import MatterScene from './scenes/matterScene'
 import RoomManager from '../managers/roomManager'
 
 export class PhaserGame extends Phaser.Game {
-  constructor(config: GameConfig) {
+  constructor(config: Phaser.Types.Core.GameConfig) {
     super(config)
   }
 }
