@@ -37,10 +37,10 @@
   "license": "MIT",
   "dependencies": {
     "@geckos.io/phaser-on-nodejs": "^1.0.3",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "compression": "^1.7.4",
     "express": "^4.16.4",
-    "helmet": "^3.16.0",
+    "helmet": "^3.21.1",
     "moment": "^2.24.0",
     "phaser": "^3.20.1",
     "pidusage": "^2.0.17",
