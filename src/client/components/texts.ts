@@ -3,7 +3,7 @@ import { MAX_PLAYERS_PER_ROOM } from "../../constants"
 const texts = [
   {
     text: '',
-    y: 200,
+    y: 230,
     fontSize: 28,
     type: 'server_running_time'
   },
@@ -34,10 +34,7 @@ const texts = [
 ]
 
 export default class Texts {
-  textObjects: {
-    text: Phaser.GameObjects.Text
-    type: string | undefined
-  }[] = []
+  textObjects: { [key: string]: Phaser.GameObjects.Text } = {}
   hidden = false
   bug: Phaser.GameObjects.Image | undefined
 
@@ -52,7 +49,8 @@ export default class Texts {
         .setResolution(window.devicePixelRatio)
         .setScrollFactor(0)
         .setDepth(100)
-      this.textObjects.push({ text: theText, type: text.type || undefined })
+
+      this.textObjects[text.type] = theText
     })
 
     this.makeBug()
@@ -79,41 +77,33 @@ export default class Texts {
 
   toggleHidden() {
     this.hidden = !this.hidden
-    this.textObjects.forEach(textObj => {
-      textObj.text.setAlpha(this.hidden ? 0 : 1)
-    })
+    for (const key in this.textObjects) {
+      this.textObjects[key].setAlpha(this.hidden ? 0 : 1)
+    }
   }
 
   resize() {
-    this.textObjects.forEach(textObj => {
-      textObj.text.setPosition(this.scene.cameras.main.width / 2, textObj.text.y)
+    texts.forEach(text => {
+      const textObj = this.textObjects[text.type]
+      textObj.setPosition(this.scene.cameras.main.width / 2, text.y)
     })
     if (this.bug) this.bug.setPosition(16, 16)
   }
 
   setConnectCounter(connectCounter: number) {
-    this.textObjects.forEach(t => {
-      if (t.type && t.type === 'show_connected_users') t.text.setText(`Connected users: ${connectCounter}/${MAX_PLAYERS_PER_ROOM}`)
-    })
+    this.textObjects['show_connected_users'].setText(`Connected users: ${connectCounter}/${MAX_PLAYERS_PER_ROOM}`)
   }
 
   setRoomId(roomId: string) {
-    this.textObjects.forEach(t => {
-      if (t.type && t.type === 'the_room_id') t.text.setText(`RoomId ${roomId}`)
-    })
+    this.textObjects['the_room_id'].setText(`RoomId ${roomId}`)
   }
 
   setTime(time: number) {
-    this.textObjects.forEach(t => {
-      if (t.type && t.type === 'server_running_time')
-        t.text.setText(`Server is running since ${new Date(time).toUTCString()}`)
-    })
+    this.textObjects['server_running_time'].setText(`Server is running since ${new Date(time).toUTCString()}`)
   }
 
   setFps(fps: number) {
-    this.textObjects.forEach(t => {
-      if (t.type && t.type === 'show_fps') t.text.setText(`fps: ${Math.round(fps)}`)
-    })
+    this.textObjects['show_fps'].setText(`fps: ${Math.round(fps)}`)
   }
 
   setLatency(latency: Latency) {
@@ -124,11 +114,8 @@ export default class Texts {
     let sum = latency.history.reduce((previous, current) => (current += previous))
     let avg = sum / latency.history.length
 
-    this.textObjects.forEach(t => {
-      if (t.type && t.type === 'show_latency')
-        t.text.setText(
-          `Latency ${latency.current}ms (avg ${Math.round(avg)}ms / low ${latency.low}ms / high ${latency.high}ms)`
-        )
-    })
+    this.textObjects['show_latency'].setText(
+      `Latency ${latency.current}ms (avg ${Math.round(avg)}ms / low ${latency.low}ms / high ${latency.high}ms)`
+    )
   }
 }
