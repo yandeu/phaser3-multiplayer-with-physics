@@ -1,24 +1,36 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "dev",
-            "type": "shell",
-            "command": "npm run dev",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },
-        {
-          "label": "build",
-          "type": "shell",
-          "command": "npm run build",
-          "group": {
-              "kind": "build"
-          }
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "dev",
+      "type": "shell",
+      "command": "npm run dev",
+      "group": {
+        "kind": "build",
+        "isDefault": true
       }
-    ]
+    },
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "npm run build"
+    },
+    {
+      "label": "build server",
+      "type": "shell",
+      "command": "npm run server:build"
+    }
+    {
+      "label": "watch client",
+      "type": "shell",
+      "command": "npm run client"
+    },
+    {
+      "label": "watch server",
+      "type": "shell",
+      "command": "npm run server:webpack"
+    }
+  ]
 }
