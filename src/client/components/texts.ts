@@ -2,31 +2,26 @@ import { MAX_PLAYERS_PER_ROOM } from "../../constants"
 
 const texts = [
   {
-    text: '',
     y: 230,
     fontSize: 28,
     type: 'server_running_time'
   },
   {
-    text: '',
     y: 260,
     fontSize: 28,
     type: 'the_room_id'
   },
   {
-    text: '',
     y: 290,
     fontSize: 28,
     type: 'show_connected_users'
   },
   {
-    text: '',
     y: 320,
     fontSize: 28,
     type: 'show_latency'
   },
   {
-    text: '',
     y: 350,
     fontSize: 28,
     type: 'show_fps'
@@ -41,7 +36,7 @@ export default class Texts {
   constructor(public scene: Phaser.Scene) {
     texts.forEach(text => {
       let theText = scene.add
-        .text(scene.cameras.main.width / 2, text.y, text.text, {
+        .text(scene.cameras.main.width / 2, text.y, '', {
           color: '#ffffff',
           fontSize: text.fontSize
         })
