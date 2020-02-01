@@ -8,6 +8,7 @@
     "start": "npm run serve",
     "dev": "npm-run-all --parallel server client physics stats",
     "server": "npm-run-all --parallel server:*",
+    "server:build": "webpack --config webpack/webpack.server.js",
     "server:webpack": "webpack --config webpack/webpack.server.js --watch",
     "server:nodemon": "nodemon dist/server/server.js",
     "stats": "webpack --config webpack/webpack.stats.js --watch",

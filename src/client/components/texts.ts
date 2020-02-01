@@ -1,14 +1,11 @@
+import { MAX_PLAYERS_PER_ROOM } from "../../server/managers/roomManager"
+
 const texts = [
   {
     text: '',
     y: 200,
     fontSize: 28,
     type: 'server_running_time'
-  },
-  {
-    text: 'Server is located in Europe',
-    y: 230,
-    fontSize: 28
   },
   {
     text: '',
@@ -96,7 +93,7 @@ export default class Texts {
 
   setConnectCounter(connectCounter: number) {
     this.textObjects.forEach(t => {
-      if (t.type && t.type === 'show_connected_users') t.text.setText(`Connected users: ${connectCounter}/4`)
+      if (t.type && t.type === 'show_connected_users') t.text.setText(`Connected users: ${connectCounter}/${MAX_PLAYERS_PER_ROOM}`)
     })
   }
 
