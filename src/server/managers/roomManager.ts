@@ -34,9 +34,6 @@ let randomDataGenerator = new phaserMath.RandomDataGenerator()
 import uuidv4 from 'uuid/v4'
 import Stats from '../socket/ioStats'
 
-export const MAX_PLAYERS_PER_ROOM = 4
-const USER_KICK_TIMEOUT = 60_000 // 1 minute
-
 export default class RoomManager {
   rooms: Rooms = {}
 

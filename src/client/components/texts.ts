@@ -1,4 +1,4 @@
-import { MAX_PLAYERS_PER_ROOM } from "../../server/managers/roomManager"
+import { MAX_PLAYERS_PER_ROOM } from "../../constants"
 
 const texts = [
   {
