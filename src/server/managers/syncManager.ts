@@ -2,7 +2,9 @@ import MatterGameObject from '../game/matterObjects/matterGameObject'
 
 /** Helps preparing the object to sync with the client */
 export default class SyncManager {
-  static readonly keys = ['id', 'x', 'y', 'angle', 'dead', 'skin', 'animation', 'direction', 'scale', 'tint', 'clientId', 'category'];
+  static readonly keys = Object.freeze(
+    ['id', 'x', 'y', 'angle', 'dead', 'skin', 'animation', 'direction', 'scale', 'tint', 'clientId', 'category']
+  )
 
   static prepareFromPhaserGroup(group: Phaser.GameObjects.Group, objects: any) {
     group.children.iterate((sprite: any) => {
@@ -48,20 +50,26 @@ export default class SyncManager {
   }
 
   static cleanObjectToSync(obj: any) {
-    return {
-      id: obj.id || obj.body.id,
-      x: obj.x || obj.body.position.x || null,
-      y: obj.y || obj.body.position.y || null,
-      angle: obj.angle !== 'undefined' ? obj.angle : null,
-      dead: obj.dead !== 'undefined' ? obj.dead : null,
-      skin: obj.skin !== 'undefined' ? obj.skin : null,
-      animation: obj.animation || null,
-      direction: obj.direction || null,
-      scale: obj.scale && obj.scale !== 1 ? obj.scale : null,
-      tint: obj.tint ? obj.tint : null,
-      clientId: obj.clientId || null,
-      category: obj.category || null,
+    const addToObjectToSync = (key: string, prop: any) => {
+      if (prop !== null) objectToSync[key] = prop
     }
+
+    let objectToSync: { [key: string]: any } = {}
+
+    addToObjectToSync('id', obj.id || obj.body.id)
+    addToObjectToSync('x', obj.x || obj.body.position.x || null)
+    addToObjectToSync('y', obj.y || obj.body.position.y || null)
+    addToObjectToSync('angle', obj.angle !== 'undefined' ? obj.angle : null)
+    addToObjectToSync('dead', obj.dead !== 'undefined' ? obj.dead : null)
+    addToObjectToSync('skin', obj.skin !== 'undefined' ? obj.skin : null)
+    addToObjectToSync('animation', obj.animation || null)
+    addToObjectToSync('direction', obj.direction || null)
+    addToObjectToSync('scale', obj.scale && obj.scale !== 1 ? obj.scale : null)
+    addToObjectToSync('tint', obj.tint ? obj.tint : null)
+    addToObjectToSync('clientId', obj.clientId || null)
+    addToObjectToSync('category', obj.category || null)
+
+    return objectToSync
   }
 
   static decode(data: any) {
