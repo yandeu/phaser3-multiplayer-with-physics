@@ -1,8 +1,8 @@
 declare namespace Phaser {
   namespace Physics {
     namespace Matter {
-      export const Matter: typeof MatterJS
-      export const matter: typeof MatterJS
+      export const Matter: any
+      export const matter: any
     }
   }
 }

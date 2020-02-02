@@ -2,7 +2,7 @@ import Dude from './dude'
 import Box from './box'
 import MatterGameObject from './matterGameObject'
 import Star from './star'
-import { SKINS } from '../../../constants';
+import { SKINS } from '../../../constants'
 
 interface GameObjectGroupAddOptions {
   socketId?: string
@@ -11,7 +11,7 @@ interface GameObjectGroupAddOptions {
 }
 
 export default class GameObjectGroup {
-  Matter: typeof MatterJS
+  Matter: any
 
   constructor(public scene: Phaser.Scene, public objects: MatterGameObject[]) {
     this.Matter = Phaser.Physics.Matter.Matter
