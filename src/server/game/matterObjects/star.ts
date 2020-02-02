@@ -22,7 +22,7 @@ export default class Star extends MatterGameObject {
 
     this.addBody(
       this.Matter.Bodies.rectangle(x, y, 24 * this.scale, 22 * this.scale, {
-        chamfer: 14,
+        chamfer: { radius: 14 },
         label: 'star',
         isStatic: true,
         isSensor: true
