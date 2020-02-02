@@ -28,14 +28,14 @@
       "command": "npm run build:server"
     },
     {
-      "label": "watch client",
+      "label": "dev client",
       "type": "shell",
       "command": "npm run client"
     },
     {
-      "label": "watch server",
+      "label": "dev server",
       "type": "shell",
-      "command": "npm run server:webpack"
+      "command": "npm run server"
     }
   ]
 }
