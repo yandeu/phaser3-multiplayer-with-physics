@@ -111,7 +111,7 @@ export default class MainScene extends Phaser.Scene {
         this.sync.objects = [...this.sync.objects, ...res.O]
         this.sync.objects.forEach((obj: any) => {
           // the if the player's dude is in the objects list the camera follows it sprite
-          if (this.objects[obj.id] && obj.skin === SKINS.DUDE && obj.clientId && +obj.clientId === +socket.clientId) {
+          if (obj.skin === SKINS.DUDE && obj.clientId && obj.clientId === socket.clientId) {
             this.cameras.main.setScroll(obj.x - this.cameras.main.width / 2, obj.y - this.cameras.main.height / 2)
           }
 
