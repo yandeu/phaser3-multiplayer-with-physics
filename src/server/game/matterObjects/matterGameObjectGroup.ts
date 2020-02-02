@@ -11,7 +11,7 @@ interface GameObjectGroupAddOptions {
 }
 
 export default class GameObjectGroup {
-  Matter: any
+  Matter: typeof MatterJS
 
   constructor(public scene: Phaser.Scene, public objects: MatterGameObject[]) {
     this.Matter = Phaser.Physics.Matter.Matter

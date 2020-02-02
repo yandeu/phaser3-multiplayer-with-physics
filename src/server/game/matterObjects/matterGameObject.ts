@@ -1,5 +1,5 @@
 export default class MatterGameObject {
-  Matter: any
+  Matter: typeof MatterJS
   body: any
   clientId: number | undefined = undefined
   dead = false

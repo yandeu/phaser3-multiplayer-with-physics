@@ -54,6 +54,7 @@
     "@types/express": "^4.16.1",
     "@types/helmet": "0.0.43",
     "@types/jsdom": "^12.2.3",
+    "@types/matter-js": "^0.10.9",
     "@types/node": "^11.11.3",
     "@types/pidusage": "^2.0.1",
     "@types/socket.io": "^2.1.2",
