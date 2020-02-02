@@ -1,8 +1,3 @@
 {
-  "git.enabled": true,
-  "editor.tabSize": 2,
-  "tsimporter.emitSemicolon": false,
-  "typescriptHero.imports.insertSemicolons": false,
-  "typescript.format.semicolons": "remove",
-  "javascript.format.semicolons": "remove"
+  "git.enabled": true
 }
