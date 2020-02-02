@@ -28,6 +28,11 @@
       "command": "npm run build:server"
     },
     {
+      "label": "build physics",
+      "type": "shell",
+      "command": "npm run build:physics"
+    },
+    {
       "label": "dev client",
       "type": "shell",
       "command": "npm run client"
@@ -36,6 +41,11 @@
       "label": "dev server",
       "type": "shell",
       "command": "npm run server"
+    },
+    {
+      "label": "dev physics",
+      "type": "shell",
+      "command": "npm run physics"
     }
   ]
 }

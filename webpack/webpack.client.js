@@ -5,7 +5,7 @@ const webpack = require('webpack')
 
 module.exports = {
   mode: 'development',
-  devtool: 'cheap-source-map',
+  devtool: 'eval-source-map',
   entry: ['./src/client/index.ts'],
   output: {
     publicPath: 'static/client',
