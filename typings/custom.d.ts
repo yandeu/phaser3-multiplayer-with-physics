@@ -1,6 +1,10 @@
-interface Object {
-  Matter: any
-  matter: any
+declare namespace Phaser {
+  namespace Physics {
+    namespace Matter {
+      export const Matter: typeof MatterJS
+      export const matter: typeof MatterJS
+    }
+  }
 }
 
 interface Window {
