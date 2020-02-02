@@ -11,7 +11,7 @@ interface GameObjectGroupAddOptions {
 }
 
 export default class GameObjectGroup {
-  Matter: any
+  Matter: typeof MatterJS
 
   constructor(public scene: Phaser.Scene, public objects: MatterGameObject[]) {
     this.Matter = Phaser.Physics.Matter.Matter
@@ -23,7 +23,7 @@ export default class GameObjectGroup {
     })
   }
 
-  getObjectById(id: string) {
+  getObjectById(id: string): MatterGameObject | undefined {
     let object = undefined
     this.objects.forEach((obj: any) => {
       if (obj.body.id === id) object = obj

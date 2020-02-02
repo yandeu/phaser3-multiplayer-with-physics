@@ -57,7 +57,7 @@ export default class MainScene extends Phaser.Scene {
     // this will stop the scene
     this.events.addListener('stopScene', () => {
       this.objects.forEach(obj => {
-        this.matter.world.remove(this.matter.world, obj.body)
+        this.matter.world.remove(obj.body)
       })
       this.roomManager.stats.removeTotalObjects(this.roomId)
       this.scene.stop()

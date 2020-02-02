@@ -1,6 +1,12 @@
+import { BodyType } from "matter"
+
+type BodyWithPrevVelocity = BodyType & {
+  prevVelocity: { x: number, y: number }
+}
+
 export default class MatterGameObject {
-  Matter: any
-  body: any
+  Matter: typeof MatterJS
+  body: BodyWithPrevVelocity
   clientId: number | undefined = undefined
   dead = false
   prevDead = false
@@ -23,7 +29,7 @@ export default class MatterGameObject {
   protected addBodies(bodies: any[]) {
     this.body = this.Matter.Body.create({
       parts: bodies.map(body => body)
-    })
+    }) as BodyWithPrevVelocity
     this.body.prevVelocity = { x: 0, y: 0 }
     this.scene.matter.world.add(this.body)
   }
