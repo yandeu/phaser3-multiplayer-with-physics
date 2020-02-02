@@ -28,14 +28,12 @@ interface Rooms {
 }
 import Game, { PhaserGame } from '../game/game'
 import { Math as phaserMath } from 'phaser'
+import { MAX_PLAYERS_PER_ROOM, USER_KICK_TIMEOUT } from '../../constants'
 
 let randomDataGenerator = new phaserMath.RandomDataGenerator()
 
 import uuidv4 from 'uuid/v4'
 import Stats from '../socket/ioStats'
-
-const MAX_PLAYERS_PER_ROOM = 4
-const USER_KICK_TIMEOUT = 60000
 
 export default class RoomManager {
   rooms: Rooms = {}
