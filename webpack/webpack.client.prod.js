@@ -1,6 +1,7 @@
 const merge = require('webpack-merge')
 const common = require('./webpack.client')
 const webpack = require('webpack')
+const TerserPlugin = require('terser-webpack-plugin')
 
 const prod = {
   mode: 'production',
@@ -15,7 +16,10 @@ const prod = {
           filename: '[name].[contenthash].bundle.js'
         }
       }
-    }
+    },
+    minimizer: [
+      new TerserPlugin({ extractComments: 'all' })
+    ]
   },
   plugins: [
     new webpack.DefinePlugin({
