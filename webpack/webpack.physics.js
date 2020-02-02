@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
+  devtool: 'cheap-source-map',
   entry: ['./src/physics/index.ts'],
   output: {
     publicPath: 'static/physics',

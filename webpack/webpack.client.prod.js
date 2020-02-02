@@ -4,6 +4,7 @@ const webpack = require('webpack')
 
 const prod = {
   mode: 'production',
+  devtool: '',
   output: {
     filename: '[name].[contenthash].bundle.js',
     chunkFilename: '[name].[contenthash].chunk.js'

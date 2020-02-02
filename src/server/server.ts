@@ -18,7 +18,7 @@ import IoGame from './socket/ioGame'
 const port = process.env.PORT || 3000
 
 // create 2 socket.io namespaces
-const ioNspGame = io.of('/G' /* short for stats */)
+const ioNspGame = io.of('/G' /* short for game */)
 const ioNspStats = io.of('/S' /* short for stats */)
 
 const ioStats = new IoStats(ioNspStats)
