@@ -14,7 +14,7 @@ export default class Box extends Phaser.Physics.Arcade.Sprite {
     this.body
       .setSize(95, 95)
       // 32 is the default width an height for an sprite if the texture can not be loaded
-      .setOffset(-32)
+      .setOffset(-32, -32)
 
     this.id = id.toString()
   }
