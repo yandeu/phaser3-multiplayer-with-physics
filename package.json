@@ -5,7 +5,7 @@
   "homepage": "https://github.com/yandeu/phaser3-multiplayer-with-physics#readme",
   "main": "server.js",
   "scripts": {
-    "start": "npm run serve",
+    "start": "npm run dev",
     "dev": "npm-run-all --parallel server client physics stats",
     "server": "npm-run-all --parallel server:*",
     "server:webpack": "webpack --config webpack/webpack.server.js --watch",
