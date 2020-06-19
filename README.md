@@ -37,6 +37,14 @@ _This example is running on NodeJS on Heroku (**Free Dyno** in **Europe**) which
 - Physics debugging version
 - A nice Stats page
 
+## Geckos.io
+
+Why does this game example not use geckos.io?  
+Well there are two reasons:
+
+- Geckos.io did not exist back then.
+- This example is deployed on heroku, which does not allow to forward UDP ports, geckos.io depends on.
+
 ## Video
 
 Watch it on YouTube
