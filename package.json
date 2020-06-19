@@ -18,7 +18,8 @@
     "prettier": "prettier --write 'src/**/*.ts'",
     "docker:start": "npm i --only=production && npm run serve",
     "docker:publish": "npm run build && docker-compose up -d --build",
-    "docker:up": "docker-compose up -d --build"
+    "docker:up": "docker-compose up -d --build",
+    "postinstall": "webpack --config webpack/webpack.server.js && webpack --config webpack/webpack.stats.js && webpack --config webpack/webpack.client.js && webpack --config webpack/webpack.physics.js"
   },
   "author": {
     "name": "Yannick Deubel",
