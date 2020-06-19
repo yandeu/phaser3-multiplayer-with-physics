@@ -13,6 +13,7 @@ A Real-Time Multiplayer example using <a href="https://phaser.io/" target="_blan
   <a href="https://david-dm.org/yandeu/phaser3-multiplayer-with-physics" title="dependencies status">
     <img src="https://david-dm.org/yandeu/phaser3-multiplayer-with-physics/status.svg?style=flat-square"/>
   </a>
+  <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/yandeu/phaser3-multiplayer-with-physics?style=flat-square">
   <a href="https://opensource.org/licenses/MIT" title="License: MIT" >
     <img src="https://img.shields.io/badge/License-MIT-greenbright.svg?style=flat-square">
   </a>
