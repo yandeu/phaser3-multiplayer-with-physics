@@ -8,7 +8,12 @@ export default class Box extends MatterGameObject {
     super(scene, SKINS.BOX)
 
     this.addBody(
-      this.Matter.Bodies.rectangle(x, y, 95, 95, { friction: 0.1, chamfer: { radius: 14 }, label: 'box', density: 0.000125 })
+      this.Matter.Bodies.rectangle(x, y, 95, 95, {
+        friction: 0.1,
+        chamfer: { radius: 14 },
+        label: 'box',
+        density: 0.000125
+      })
     )
 
     this.lifeTime = Phaser.Math.RND.integerInRange(1000 * 15, 1000 * 45)

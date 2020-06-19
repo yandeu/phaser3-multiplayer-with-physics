@@ -1,4 +1,4 @@
-import { SKINS } from "../../../constants";
+import { SKINS } from '../../../constants'
 
 export default class Box extends Phaser.Physics.Arcade.Sprite {
   skin = SKINS.BOX

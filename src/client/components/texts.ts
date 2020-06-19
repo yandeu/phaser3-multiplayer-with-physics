@@ -1,4 +1,4 @@
-import { MAX_PLAYERS_PER_ROOM } from "../../constants"
+import { MAX_PLAYERS_PER_ROOM } from '../../constants'
 
 const texts = [
   {
