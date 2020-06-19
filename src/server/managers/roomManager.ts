@@ -32,7 +32,7 @@ import { MAX_PLAYERS_PER_ROOM, USER_KICK_TIMEOUT } from '../../constants'
 
 let randomDataGenerator = new phaserMath.RandomDataGenerator()
 
-import uuidv4 from 'uuid/v4'
+import { v4 as uuidv4 } from 'uuid'
 import Stats from '../socket/ioStats'
 
 export default class RoomManager {
@@ -197,7 +197,7 @@ export default class RoomManager {
 
   getRoomsArray() {
     let rooms: Room[] = []
-    Object.keys(this.rooms).forEach(roomId => {
+    Object.keys(this.rooms).forEach((roomId) => {
       rooms.push(this.rooms[roomId])
     })
     return rooms
@@ -209,7 +209,7 @@ export default class RoomManager {
 
     if (!this.roomExists(roomId)) return users
 
-    Object.keys(this.rooms[roomId].users).forEach(userId => {
+    Object.keys(this.rooms[roomId].users).forEach((userId) => {
       users.push(this.rooms[roomId].users[userId])
     })
     return users
@@ -218,8 +218,8 @@ export default class RoomManager {
   /** Returns an Array of all users in all rooms */
   getAllUsersArray() {
     let users: User[] = []
-    Object.keys(this.rooms).forEach(roomId => {
-      Object.keys(this.rooms[roomId].users).forEach(userId => {
+    Object.keys(this.rooms).forEach((roomId) => {
+      Object.keys(this.rooms[roomId].users).forEach((userId) => {
         users.push(this.rooms[roomId].users[userId])
       })
     })
