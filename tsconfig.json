@@ -10,6 +10,9 @@
     "noImplicitAny": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "strictPropertyInitialization": false
-  }
+    "strictPropertyInitialization": false,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }

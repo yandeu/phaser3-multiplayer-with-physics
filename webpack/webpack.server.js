@@ -22,7 +22,10 @@ module.exports = {
       {
         test: /\.tsx?$/,
         include: path.join(__dirname, '../src'),
-        loader: 'ts-loader'
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: true
+        }
       }
     ]
   },
