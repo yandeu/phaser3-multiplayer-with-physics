@@ -23,6 +23,10 @@ A Real-Time Multiplayer example using <a href="https://phaser.io/" target="_blan
 
 ---
 
+## ⚠️ Note
+
+This example is using [`@geckos.io/phaser-on-nodejs`](https://github.com/geckosio/phaser-on-nodejs#readme) which is very slow tedious. If you need to run Phaser's Arcade Physics on the Server, I recommend using [`arcade-physics`](https://github.com/yandeu/arcade-physics#readme). I will not update this example anymore.
+
 ## Play It
 
 _This example is running on NodeJS on Heroku (**Free Dyno** in **Europe**) which causes the example sometimes to take **about 1 minute to load**._
