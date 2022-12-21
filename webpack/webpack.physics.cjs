@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
+  stats: 'errors-warnings',
   entry: ['./src/physics/index.ts'],
   output: {
     publicPath: 'static/physics',

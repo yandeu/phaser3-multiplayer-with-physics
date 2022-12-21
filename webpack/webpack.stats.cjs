@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
+  stats: 'errors-warnings',
   entry: ['./src/stats/index.ts'],
   output: {
     publicPath: 'static/stats',

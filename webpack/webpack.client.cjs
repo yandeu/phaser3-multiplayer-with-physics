@@ -5,6 +5,7 @@ const webpack = require('webpack')
 
 module.exports = {
   mode: 'development',
+  stats: 'errors-warnings',
   entry: ['./src/client/index.ts'],
   output: {
     publicPath: 'static/client',
