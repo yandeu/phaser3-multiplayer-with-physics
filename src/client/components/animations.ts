@@ -24,7 +24,7 @@ export const createDudeAnimations = (scene: Phaser.Scene) => {
 
 export const setDudeAnimation = (sprite: Phaser.GameObjects.Sprite, animation: string = 'idle') => {
   if (!sprite.anims.isPlaying) sprite.play(animation)
-  else if (sprite.anims.isPlaying && sprite.anims.getCurrentKey() !== animation) sprite.play(animation)
+  else if (sprite.anims.isPlaying && sprite.anims.getName() !== animation) sprite.play(animation)
 }
 
 export const createMummyAnimation = (scene: Phaser.Scene) => {
