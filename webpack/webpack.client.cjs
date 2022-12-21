@@ -42,7 +42,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/client/index.html'
     }),
-    new CopyWebpackPlugin([{ from: 'src/client/assets', to: 'assets' }]),
+    new CopyWebpackPlugin({ patterns: [{ from: 'src/client/assets', to: 'assets' }] }),
     new webpack.DefinePlugin({
       PHYSICS_DEBUG: JSON.stringify(false)
     })

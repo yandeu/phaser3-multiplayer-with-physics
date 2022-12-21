@@ -32,5 +32,5 @@ app.use('/static', express.static(path.join(__dirname, '../')))
 app.use('/', new Routes(roomManager, ioStats).router)
 
 server.listen(port, () => {
-  console.log('App is listening on port ' + port)
+  console.log('App is listening on http://localhost:' + port)
 })
